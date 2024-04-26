@@ -5,24 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars</title>
     <link rel="stylesheet" href="css/styles.css"/> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Handlee&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <div id="app">
 
-        <h1>{{title}}</h1>
-        <small>Olá, {{userName}}</small>
+        <div class="top">
+            <div>
+                <h1>{{title}}</h1>
+                <small>Olá, {{userName}}</small>
+            </div>
 
-        <form>
-            <input placeholder="Busque por nome..." v-model="searchName"/>
-            <button type="button" @click="search()">Buscar</button>
-        </form>
+            <form>
+                <input placeholder="Busca por nome..." v-model="searchName"/>
+                <button class="btn-main" type="button" @click="search()">Buscar</button>
+            </form>
+        </div>
+
 
         <div class="characters">
             <div class="item" v-for="item of characters">
                 <img :src="item.avatar" :alt="item.name" >
                 <p>{{item.name}}</p>
-                <button @click="like(item.name)" data-test="like">Like</button>
-                <button @click="remove(item.id)" data-test="remover">Remover</button>
+                <span @click="like(item.name)" data-test="like" class="like material-symbols-outlined" >
+                    favorite
+                </span>
+                <span @click="remove(item.id)" data-test="remover" class="delete material-symbols-outlined">
+                    delete
+                </span>
             </div>
         </div>
 
